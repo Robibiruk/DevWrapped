@@ -15,6 +15,8 @@ import {
   Flame,
   TrendingUp,
   ArrowRight,
+  EllipsisVertical,
+  RotateCcw,
 } from 'lucide-react'
 import type { Analysis } from '../../lib/analysis'
 import type { Personality } from '../../lib/personality'
@@ -108,6 +110,7 @@ export default function ShareStudio({ analysis, personality, username, year, ava
   const [idx, setIdx] = useState(0)
   const [busy, setBusy] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const refs = useRef<Array<HTMLDivElement | null>>([])
   const touchX = useRef<number | null>(null)
 
@@ -228,7 +231,34 @@ export default function ShareStudio({ analysis, personality, username, year, ava
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <div className="w-full max-w-[380px]" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div className="relative w-full max-w-[380px]" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+          {/* Card menu button */}
+          <div className="absolute right-0 top-0 z-30" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              className="rounded-full border border-white/10 bg-white/10 p-1.5 text-slate-400 transition hover:bg-white/20 hover:text-white"
+              aria-label="Card options"
+            >
+              <EllipsisVertical className="h-4 w-4" />
+            </button>
+            {menuOpen && (
+              <div className="absolute right-0 top-full z-40 mt-1 w-40 overflow-hidden rounded-xl border border-white/10 bg-night-soft/95 shadow-2xl backdrop-blur-xl">
+                <button onClick={() => { download(); setMenuOpen(false) }} className="flex w-full items-center gap-2 px-3 py-2.5 text-xs text-slate-300 hover:bg-white/10">
+                  <Download className="h-3.5 w-3.5" /> Download PNG
+                </button>
+                <button onClick={() => { copyImage(); setMenuOpen(false) }} className="flex w-full items-center gap-2 px-3 py-2.5 text-xs text-slate-300 hover:bg-white/10">
+                  <Copy className="h-3.5 w-3.5" /> Copy Image
+                </button>
+                <button onClick={() => { share(); setMenuOpen(false) }} className="flex w-full items-center gap-2 px-3 py-2.5 text-xs text-slate-300 hover:bg-white/10">
+                  <Share2 className="h-3.5 w-3.5" /> Share
+                </button>
+                <button onClick={() => { setIdx(0); setMenuOpen(false) }} className="flex w-full items-center gap-2 px-3 py-2.5 text-xs text-slate-300 hover:bg-white/10">
+                  <RotateCcw className="h-3.5 w-3.5" /> Replay
+                </button>
+              </div>
+            )}
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={cardIndex}
