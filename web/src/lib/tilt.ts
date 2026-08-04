@@ -239,9 +239,11 @@ export function useTilt(theme: Theme): TiltRefs & {
     shell.addEventListener('pointermove', move)
     shell.addEventListener('pointerleave', leave)
 
-    // Mobile/small-device tilt via device orientation (requires secure context;
-    // iOS needs an explicit permission prompt triggered by a tap).
-    const handleClick = (): void => {
+    // Mobile/small-device tilt via device orientation.
+    // On Android / desktop secure contexts: listener works immediately, no user gesture needed.
+    // On iOS Safari: requestPermission() requires a user gesture — calling it on mount
+    // will likely fail silently; the click fallback retries in a proper gesture context.
+    const enableOrientation = (): void => {
       if (!window.isSecureContext || orientationAdded.current) return
       const anyOri = window.DeviceOrientationEvent as typeof DeviceOrientationEvent & {
         requestPermission?: () => Promise<string>
@@ -261,7 +263,8 @@ export function useTilt(theme: Theme): TiltRefs & {
         orientationAdded.current = true
       }
     }
-    shell.addEventListener('click', handleClick)
+    enableOrientation()
+    shell.addEventListener('click', enableOrientation)
 
     const initialX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET
     tiltEngine.setImmediate(initialX, ANIMATION_CONFIG.INITIAL_Y_OFFSET)
@@ -272,7 +275,7 @@ export function useTilt(theme: Theme): TiltRefs & {
       shell.removeEventListener('pointerenter', enter)
       shell.removeEventListener('pointermove', move)
       shell.removeEventListener('pointerleave', leave)
-      shell.removeEventListener('click', handleClick)
+      shell.removeEventListener('click', enableOrientation)
       window.removeEventListener('deviceorientation', orient)
       if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current)
       if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current)

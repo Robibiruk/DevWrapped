@@ -31,7 +31,7 @@ export default function Opening({ username, year, avatarUrl }: Props) {
       </motion.p>
       <motion.h1
         {...fadeUp(0.45)}
-        className="mt-3 max-w-2xl font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl"
+        className="mt-3 w-full font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl"
       >
         Your {year} <span className="bg-gradient-to-r from-primary via-accent to-highlight bg-clip-text text-transparent">in code</span>
       </motion.h1>
