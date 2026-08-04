@@ -180,9 +180,11 @@ export default function ShareStudio({ analysis, personality, username, year, ava
   }
 
   return (
-    <div className="flex w-full flex-col items-center gap-4" onClick={(e) => e.stopPropagation()}>
-      <ThemePicker themeId={themeId} onSelect={setThemeId} />
-
+    <div
+      className="flex w-full flex-col items-center gap-5 lg:flex-row lg:items-start lg:justify-center lg:gap-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="flex w-full flex-col items-center gap-4">
       <AnimatePresence mode="wait">
         {isPoster ? (
           <motion.div
@@ -331,6 +333,11 @@ export default function ShareStudio({ analysis, personality, username, year, ava
           Share
         </button>
       </div>
+      </div>
+
+      <aside className="w-full max-w-[420px] lg:w-auto lg:max-w-none lg:pt-6">
+        <ThemePicker themeId={themeId} onSelect={setThemeId} />
+      </aside>
     </div>
   )
 }

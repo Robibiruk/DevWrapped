@@ -22,7 +22,7 @@ export default function Landing() {
   }
 
   return (
-    <div className="fixed inset-0 overflow-y-auto bg-night text-slate-100">
+    <div className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-night text-slate-100">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-primary/25 blur-3xl" />
         <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
