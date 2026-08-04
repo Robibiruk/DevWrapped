@@ -49,6 +49,10 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors })
     }
+    // Health/root — makes the worker's base URL return 200 for uptime monitors and browsers.
+    if (url.pathname === '/' || url.pathname === '/health') {
+      return json({ ok: true, service: 'devwrapped-api' }, 200, cors)
+    }
     if (url.pathname !== '/api/wrapped') {
       return json({ error: 'not_found', message: 'Not found.' }, 404, cors)
     }
