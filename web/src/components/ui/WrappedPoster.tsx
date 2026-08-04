@@ -97,7 +97,7 @@ export default function WrappedPoster({ analysis, personality, username, year, a
             'rgba(0,0,0,0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
         }}
       >
-        <CardEffects theme={theme} shineStyle={shineStyle} glareStyle={glareStyle} />
+        <CardEffects theme={theme} cardType="share" shineStyle={shineStyle} glareStyle={glareStyle} />
 
         <div
           className="relative z-[2] flex h-full flex-col"

@@ -38,6 +38,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
 
   if (topLang) {
     defs.push({
+      cardType: 'language',
       icon: <Braces className="h-5 w-5" />,
       label: 'top language',
       value: topLang.name,
@@ -47,6 +48,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
     })
   }
   defs.push({
+    cardType: 'numbers',
     icon: <GitCommitHorizontal className="h-5 w-5" />,
     label: 'total commits',
     value: analysis.totalCommits.toLocaleString(),
@@ -56,6 +58,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
   })
   if (analysis.longestStreak > 0) {
     defs.push({
+      cardType: 'streak',
       icon: <Flame className="h-5 w-5" />,
       label: 'longest streak',
       value: `${analysis.longestStreak}`,
@@ -66,6 +69,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
   }
   if (peak) {
     defs.push({
+      cardType: 'peak',
       icon: <TrendingUp className="h-5 w-5" />,
       label: 'peak day',
       value: peak.count.toLocaleString(),
@@ -76,6 +80,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
   }
   if (analysis.mostActiveRepo !== '—') {
     defs.push({
+      cardType: 'repo',
       icon: <Star className="h-5 w-5" />,
       label: 'most active repo',
       value: analysis.mostActiveRepo,
@@ -85,6 +90,7 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
     })
   }
   defs.push({
+    cardType: 'personality',
     icon: <span className="text-lg leading-none">{personality.archetype.emoji}</span>,
     label: 'developer archetype',
     value: personality.archetype.name,

@@ -1,11 +1,12 @@
 import type { ReactNode, Ref } from 'react'
 import { Code } from 'lucide-react'
-import type { Theme } from '../../lib/themes'
+import type { Theme, CardType } from '../../lib/themes'
 import { useTilt } from '../../lib/tilt'
 import CardEffects from './CardEffects'
 
 export interface ShareCardProps {
   theme: Theme
+  cardType?: CardType
   icon: ReactNode
   label: string
   value: string
@@ -17,7 +18,7 @@ export interface ShareCardProps {
 
 export type StatCardDef = Omit<ShareCardProps, 'theme' | 'ref'>
 
-export default function ShareCard({ theme, icon, label, value, sub, username, year, ref }: ShareCardProps) {
+export default function ShareCard({ theme, cardType, icon, label, value, sub, username, year, ref }: ShareCardProps) {
   const { wrapRef, shellRef, vars, glowStyle, shineStyle, glareStyle } = useTilt(theme)
   const valueFont = theme.mono ? 'font-mono' : 'font-display'
 
@@ -50,7 +51,7 @@ export default function ShareCard({ theme, icon, label, value, sub, username, ye
             'rgba(0,0,0,0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
         }}
       >
-        <CardEffects theme={theme} shineStyle={shineStyle} glareStyle={glareStyle} />
+        <CardEffects theme={theme} cardType={cardType} shineStyle={shineStyle} glareStyle={glareStyle} />
 
         <div
           className="relative z-[2] flex h-full flex-col justify-between"

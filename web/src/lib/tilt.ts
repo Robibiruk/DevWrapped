@@ -26,6 +26,8 @@ if (typeof document !== 'undefined' && !document.getElementById(KEYFRAMES_ID)) {
       0% { background-position: 0 var(--background-y), 0 0, center; }
       100% { background-position: 0 var(--background-y), 90% 90%, center; }
     }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes iridescent { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
   `
   document.head.appendChild(style)
 }
