@@ -4,7 +4,7 @@
 
 ### *Your Year in Code.*
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-000?logo=vercel&logoColor=white)](https://devwrapped.vercel.app)
+[![Deployed on Cloudflare](https://img.shields.io/badge/Deployed-Cloudflare-F48120?logo=cloudflare&logoColor=white)](https://a8594948.devwrapped-l8p.pages.dev)
 [![API on Cloudflare Workers](https://img.shields.io/badge/API-Cloudflare%20Workers-F48120?logo=cloudflare&logoColor=white)](https://devwrapped-api.robekmedia-723.workers.dev)
 [![Built with React](https://img.shields.io/badge/Built%20with-React%20%2B%20Vite-61DAFB?logo=react&logoColor=white)](https://vitejs.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -12,15 +12,11 @@
 > Turn a GitHub profile into a cinematic, interactive story.  
 > Not another dashboard. A **Wrapped**.
 
-[**Try it live →**](https://devwrapped.vercel.app)
+[**Try it live →**](https://a8594948.devwrapped-l8p.pages.dev)
 
 ---
-
-![Hero Screenshot](screenshots/hero.png)
 
 </div>
-
----
 
 ## What is DevWrapped?
 
@@ -28,51 +24,115 @@ Spotify Wrapped went viral because it wasn't analytics — it was **storytelling
 
 GitHub has millions of developers, yet every recap tool today is just a dashboard wearing colorful clothes.
 
-DevWrapped changes that. Enter a username. Get a **10-slide cinematic deck** that tells the story behind your year as a developer — what you built, when you coded, how you think, and what your commit history secretly says about you.
+DevWrapped changes that. Enter a username. Get a **10-slide cinematic story** that tells the story behind your year as a developer — what you built, when you coded, how you think, and what your commit history secretly says about you.
 
 ---
 
-## Features
+## The Story — 10 slides, one narrative
 
-### The Deck — 10 slides, one story
+<table>
+<tr><th align="center" width="60">#</th><th align="left">Slide</th><th align="left">What it shows</th></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-1-black?style=flat-square"/></td><td><b>Opening</b></td><td>Animated reveal with your avatar, gesture instructions, and "Your2026 in Code"</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-2-black?style=flat-square"/></td><td><b>Year in Numbers</b></td><td>Commits, repos, PRs, issues, stars, followers — count-up animation</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-3-black?style=flat-square"/></td><td><b>Tech DNA</b></td><td>Your language breakdown as an animated genome visualization</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-4-black?style=flat-square"/></td><td><b>Commit Psychology</b></td><td>"You typed 'fix' 48 times." — what your messages really say</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-5-black?style=flat-square"/></td><td><b>Project Graveyard</b></td><td>Created 22 repos, maintained 4. The rest are enjoying retirement.</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-6-black?style=flat-square"/></td><td><b>Peak Moment</b></td><td>Your hardest coding day — 47 commits, 3 repos, 9 hours</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-7-black?style=flat-square"/></td><td><b>The Night Owl</b></td><td>Latest commit at2:00 AM — "please work"</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-8-black?style=flat-square"/></td><td><b>Hall of Fame</b></td><td>Most starred, most active, longest-running, fastest-growing</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-9-black?style=flat-square"/></td><td><b>Developer Archetype</b></td><td>The Explorer, The Finisher, The Night Owl — personality from data</td></tr>
+<tr><td align="center"><img src="https://img.shields.io/badge/-10-black?style=flat-square"/></td><td><b>Share Studio</b></td><td>6 themed stat cards + all-in-one poster, 8 theme packs, download/share</td></tr>
+</table>
 
-| # | Slide | What it shows |
-|---|-------|---------------|
-| 1 | **Opening** | Animated reveal with your avatar and "Your 2026 in Code" |
-| 2 | **Year in Numbers** | Commits, repos, PRs, issues, stars, followers — count-up animation |
-| 3 | **Tech DNA** | Your language breakdown as an animated genome visualization |
-| 4 | **Commit Psychology** | "You typed 'fix' 48 times." — what your messages really say |
-| 5 | **Project Graveyard** | Created 22 repos, maintained 4. The rest are enjoying retirement. |
-| 6 | **Peak Moment** | Your hardest coding day — 47 commits, 3 repos, 9 hours |
-| 7 | **The Night Owl** | Latest commit at 2:00 AM — "please work" |
-| 8 | **Hall of Fame** | Most starred, most active, longest-running, fastest-growing |
-| 9 | **Developer Archetype** | The Explorer, The Finisher, The Night Owl — personality from data |
-| 10 | **Share Studio** | 6 stat cards + all-in-one poster,8 theme packs, download/share |
+---
 
-### Theme Packs — your Wrapped, your style
+## Theme Packs — your Wrapped, your style
 
-Each theme changes the card surfaces, colors, typography, and decorative effects:
+Each theme is a complete visual identity — different backgrounds, decorations, typography, and **per-card treatments** (the streak card looks different from the language card, even in the same theme).
 
-| Theme | Vibe | Best for |
-|-------|------|----------|
-| 🌌 **Neon Observatory** | Aurora gradients, stars, glassmorphism | Default / signature look |
-| 🎵 **Wrapped Classic** | Bold gradients, giant typography | Familiar, highly shareable |
-| ⚫ **Midnight Minimal** | Black, white, subtle accents | LinkedIn, professional |
-| 🛰 **Cyber Terminal** | CRT, monospace, scanlines | Developers, open-source |
-| 🌍 **Open Source Universe** | Repos as planets, stars as commits | Creative storytelling |
-| 📐 **Blueprint** | Engineering grids, paper texture | Engineers, architects |
-| 🎮 **Pixel Arcade** | Retro 8-bit, chunky neon | Gamers, nostalgic |
-| 💎 **Glass Aurora** | Frosted glass, liquid gradients | Premium, modern |
+<table>
+<tr>
+<td width="33%" valign="top">
+<h4>🌌 Neon Observatory</h4>
+Aurora gradients, stars, constellation dots, nebula depth<br/>
+<sub><b>Best for:</b> Default / signature look</sub>
+</td>
+<td width="33%" valign="top">
+<h4>⚫ Midnight Minimal</h4>
+Black, white, subtle accents, line-graph streak<br/>
+<sub><b>Best for:</b> LinkedIn, professional</sub>
+</td>
+<td width="33%" valign="top">
+<h4>💻 Cyber Terminal</h4>
+ASCII bars, terminal grids, CRT scanlines<br/>
+<sub><b>Best for:</b> Developers, open-source</sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+<h4>📐 Blueprint</h4>
+Engineering grids, dimension lines, spec sheets<br/>
+<sub><b>Best for:</b> Engineers, architects</sub>
+</td>
+<td width="33%" valign="top">
+<h4>🌋 Magma Core</h4>
+Molten lava gradients, floating embers, forged metal<br/>
+<sub><b>Best for:</b> Power & intensity</sub>
+</td>
+<td width="33%" valign="top">
+<h4>🌊 Abyss</h4>
+Deep ocean, bubble trails, jellyfish glow<br/>
+<sub><b>Best for:</b> Calm & immersive</sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+<h4>🌸 Sakura</h4>
+Cherry blossom petals, ink brush, matte paper<br/>
+<sub><b>Best for:</b> Elegant & artistic</sub>
+</td>
+<td width="33%" valign="top">
+<h4>⚜️ Noir Gold</h4>
+Matte black + satin gold, luxury minimal<br/>
+<sub><b>Best for:</b> Premium, LinkedIn</sub>
+</td>
+<td width="33%"></td>
+</tr>
+</table>
 
-### Interactions
+---
 
-- **3D Tilt** — cards tilt toward your cursor with a holo shine, pointer-following glow, and a `</>` code watermark
-- **Mobile Gyro** — tilt your phone and the card responds (gyroscope on Android, tap-to-activate on iOS)
-- **Touch Swipe** — swipe cards in the Share Studio
-- **Tap to Navigate** — tap right half of screen to advance, left half to go back
-- **Theme Switching** — real-time theme swap with live card transition
-- **PNG Export** — download any stat card or the all-in-one poster at 1080px resolution
-- **Clipboard + Share** — copy to clipboard or native share sheet (where supported)
+## Interactions
+
+- **Auto-advance** — story progresses automatically with per-slide timing (3–6s), pauses on hold
+- **Hold → pause** — press and hold anywhere to pause the story; release to resume
+- **Hold → hide UI** — hold for500ms to hide everything (screenshot-ready artwork)
+- **3D Tilt** — cards tilt toward your cursor with holo shine, glow, and a `</>` watermark
+- **Mobile Gyro** — tilt your phone and cards respond (permission granted on first tap)
+- **Touch Swipe** — swipe left/right to navigate between slides
+- **Tap zones** — tap right half = next, left half = previous
+- **⋮ Menu** — per-card Download PNG, Copy Image, Share, Replay
+- **Theme Switching** — instant live preview, no reload
+- **Archetype Recommendation** — auto-selects the best theme based on your developer personality
+
+---
+
+## Tech Stack
+
+<div align="center">
+
+![Stack](https://skillicons.dev/icons?i=react,vite,ts,tailwind,cloudflare,vercel&theme=dark)
+
+</div>
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 19 · Vite · TypeScript · Tailwind CSS |
+| Animation | Framer Motion · Custom tilt/holo engine |
+| State | Zustand · TanStack Query |
+| Export | html-to-image |
+| API | Cloudflare Workers (Cache API) |
+| Hosting | Cloudflare Pages (web) + Cloudflare Workers (API) |
 
 ---
 
@@ -84,7 +144,7 @@ Each theme changes the card surfaces, colors, typography, and decorative effects
 │                                                  │
 │  React 19 + Vite + Tailwind                      │
 │  ├── Landing Page (username input)               │
-│  ├── 10-slide Deck (Framer Motion)               │
+│  ├── 10-slide Deck (auto-advance, gestures)      │
 │  ├── Share Studio (theme picker + carousel)      │
 │  └── WrappedPoster (all-in-one stat card)        │
 │         │                                        │
@@ -98,21 +158,6 @@ Each theme changes the card surfaces, colors, typography, and decorative effects
 └─────────────────────────────────────────────────┘
 ```
 
-**Why a proxy?** GitHub's GraphQL API requires a token, and unauthenticated REST (60 req/hr) is too slow. One token behind the worker keeps generation fast (< 30s cold, < 1s cached) without exposing the token to the browser.
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19 · Vite · TypeScript · Tailwind CSS |
-| Animation | Framer Motion |
-| State | Zustand · TanStack Query |
-| Effects | html-to-image · Custom tilt/holo engine |
-| API Proxy | Cloudflare Workers (Cache API) |
-| Hosting | Vercel (web) + Cloudflare Workers (API) |
-
 ---
 
 ## Getting Started
@@ -122,11 +167,11 @@ Each theme changes the card surfaces, colors, typography, and decorative effects
 - Node 20+ and npm
 - A GitHub account (for the token)
 
-### 1. Create a GitHub Token
+###1. Create a GitHub Token
 
 Go to [github.com/settings/tokens](https://github.com/settings/tokens) → Generate a classic token → select **`public_repo`** scope. No other scopes needed.
 
-### 2. Set the Token
+###2. Set the Token
 
 ```bash
 cd worker
@@ -135,10 +180,10 @@ cp .dev.vars.example .dev.vars
 # GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxx
 ```
 
-### 3. Run Locally
+###3. Run Locally
 
 ```bash
-# Terminal 1 — API proxy (port 8787)
+# Terminal 1 — API proxy (port8787)
 cd worker && npm run dev
 
 # Terminal 2 — web app (http://localhost:5173)
@@ -161,23 +206,26 @@ npm run deploy
 wrangler secret put GITHUB_TOKEN  # paste your token at the prompt
 ```
 
-### Web (Vercel)
+### Web (Cloudflare Pages)
 
-1. Push to GitHub
-2. [vercel.com/new](https://vercel.com/new) → Import `Robibiruk/DevWrapper`
-3. Root directory: `web` · Build command: `npm run build` · Output: `dist`
-4. Environment variable: `VITE_API_BASE` → your worker URL
-5. Deploy → get `devwrapped.vercel.app`
+```bash
+cd web
+npm run build
+npx wrangler pages deploy dist --project-name devwrapped
+```
+
+Or push to GitHub and connect the repo in the Cloudflare Pages dashboard (root dir: `web`).
 
 ---
 
 ## Environment Variables
 
-| Variable | Where | Purpose |
-|----------|-------|---------|
-| `GITHUB_TOKEN` | Worker secret | GitHub PAT (classic, `public_repo` scope) |
-| `VITE_API_BASE` | Web `.env.production` | Worker API URL (baked at build time) |
-| `VITE_USE_MOCK` | Web `.env` | Set to `1` for mock data (no token needed) |
+<table>
+<tr><th>Variable</th><th>Where</th><th>Purpose</th><th>Required</th></tr>
+<tr><td><code>GITHUB_TOKEN</code></td><td>Worker secret</td><td>GitHub PAT (classic, <code>public_repo</code> scope)</td><td align="center">✅</td></tr>
+<tr><td><code>VITE_API_BASE</code></td><td>Web <code>.env.production</code></td><td>Worker API URL (baked at build time)</td><td align="center">✅</td></tr>
+<tr><td><code>VITE_USE_MOCK</code></td><td>Web <code>.env</code></td><td>Set to <code>1</code> for mock data (no token needed)</td><td align="center">⬜</td></tr>
+</table>
 
 ---
 

@@ -1,4 +1,6 @@
+import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import { ArrowRight, ArrowLeft, Pause, MoveHorizontal, Smartphone } from 'lucide-react'
 
 interface Props {
   username: string
@@ -12,9 +14,21 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' as const },
 })
 
+function Gesture({ icon, text, delay }: { icon: ReactNode; text: string; delay: number }) {
+  return (
+    <motion.div
+      {...fadeUp(delay)}
+      className="flex items-center gap-2 text-[11px] text-slate-500 sm:text-xs"
+    >
+      <span className="text-slate-400">{icon}</span>
+      <span>{text}</span>
+    </motion.div>
+  )
+}
+
 export default function Opening({ username, year, avatarUrl }: Props) {
   return (
-    <div className="flex min-h-full w-full flex-col items-center justify-center px-6 text-center">
+    <div className="flex min-h-full w-full flex-col items-center justify-center gap-6 px-6 text-center">
       <motion.img
         src={avatarUrl}
         alt=""
@@ -25,19 +39,30 @@ export default function Opening({ username, year, avatarUrl }: Props) {
       />
       <motion.p
         {...fadeUp(0.3)}
-        className="mt-6 text-[11px] font-medium uppercase tracking-[0.4em] text-slate-400 sm:text-xs"
+        className="text-[11px] font-medium uppercase tracking-[0.4em] text-slate-400 sm:text-xs"
       >
         {username}'s DevWrapped
       </motion.p>
       <motion.h1
         {...fadeUp(0.45)}
-        className="mt-3 w-full font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl"
+        className="w-full font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl"
       >
         Your {year} <span className="bg-gradient-to-r from-primary via-accent to-highlight bg-clip-text text-transparent">in code</span>
       </motion.h1>
-      <motion.p {...fadeUp(0.7)} className="mt-6 font-mono text-xs text-slate-500 sm:text-sm">
-        ▸ press → to begin
+
+      {/* CTA */}
+      <motion.p {...fadeUp(0.7)} className="mt-1 font-mono text-sm text-primary sm:text-base">
+        ▸ tap to begin
       </motion.p>
+
+      {/* Gesture hints */}
+      <motion.div {...fadeUp(0.9)} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <Gesture icon={<ArrowRight className="h-3.5 w-3.5" />} text="Tap right → next" delay={0} />
+        <Gesture icon={<ArrowLeft className="h-3.5 w-3.5" />} text="Tap left → back" delay={0.05} />
+        <Gesture icon={<Pause className="h-3.5 w-3.5" />} text="Hold → pause" delay={0.1} />
+        <Gesture icon={<MoveHorizontal className="h-3.5 w-3.5" />} text="Swipe → navigate" delay={0.15} />
+        <Gesture icon={<Smartphone className="h-3.5 w-3.5" />} text="Tilt → move cards" delay={0.2} />
+      </motion.div>
     </div>
   )
 }

@@ -228,8 +228,9 @@ export default function Deck({ story, username }: { story: Story; username: stri
 
   return (
     <div
-      className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-night text-slate-100"
+      className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-night text-slate-100 select-none"
       onClick={onCanvasTap}
+      onContextMenu={(e) => e.preventDefault()}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
