@@ -25,7 +25,7 @@ const variants = {
 
 // Auto-advance durations per slide index (ms). null = no auto-advance.
 const SLIDE_DURATIONS: (number | null)[] = [
-  3000, // Opening
+  null, // Opening — waits for user to press →
   5000, // Numbers
   5000, // TechDNA
   5000, // CommitPsychology
