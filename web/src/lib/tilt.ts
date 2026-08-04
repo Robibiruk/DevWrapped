@@ -172,7 +172,6 @@ export function useTilt(theme: Theme): TiltRefs & {
 
   const handlePointerMove = useCallback(
     (event: PointerEvent): void => {
-      if (event.pointerType !== 'mouse') return
       const shell = shellRef.current
       if (!shell || !tiltEngine) return
       const { x, y } = getOffsets(event, shell)
