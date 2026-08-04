@@ -44,7 +44,7 @@ const USERNAME_RE = /^[a-zA-Z0-9-]{1,39}$/
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url)
-    const cors = corsHeaders(request)
+    const cors = corsHeaders()
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors })
@@ -262,13 +262,13 @@ function githubClient(token: string) {
   }
 }
 
-function corsHeaders(request: Request): Record<string, string> {
-  const origin = request.headers.get('Origin') ?? '*'
+// Public read-only API — no browser auth headers, so * is safe and avoids
+// Cloudflare Cache API storing origin-tied responses that break across deployments.
+function corsHeaders(): Record<string, string> {
   return {
-    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    Vary: 'Origin',
   }
 }
 
