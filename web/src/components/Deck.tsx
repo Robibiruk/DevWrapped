@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Home } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useDeck } from '../store/deck'
+import { requestDeviceOrientationPermission } from '../lib/tilt'
 import type { useStory } from '../hooks/useWrapped'
 import Opening from './slides/Opening'
 import Numbers from './slides/Numbers'
@@ -68,6 +69,9 @@ export default function Deck({ story, username }: { story: Story; username: stri
 
   const advance = useCallback(() => {
     if (safeIndex < count - 1) goTo(safeIndex + 1)
+    // First advance is a user gesture — pre-grant orientation permission
+    // so the ShareStudio cards have tilt ready when they mount.
+    requestDeviceOrientationPermission()
   }, [safeIndex, count, goTo])
 
   const retreat = useCallback(() => {

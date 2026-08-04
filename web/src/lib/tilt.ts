@@ -42,6 +42,22 @@ export function sunpillarColors(hue: number, spread = 55): string[] {
   return [0, 1, 2, 3, 4, 5].map((i) => `hsl(${hue + (i - 2.5) * spread}, 100%, 72%)`)
 }
 
+// One-shot: request device orientation permission from a guaranteed gesture context
+// (e.g., the first user advance on the Opening slide). This pre-grants permission
+// so that when useTilt mounts later, the gyroscope listener can attach immediately.
+let orientationRequested = false
+export function requestDeviceOrientationPermission(): void {
+  if (orientationRequested) return
+  orientationRequested = true
+  if (typeof window === 'undefined' || !window.isSecureContext) return
+  const ori = window.DeviceOrientationEvent as typeof DeviceOrientationEvent & {
+    requestPermission?: () => Promise<string>
+  }
+  if (ori && typeof ori.requestPermission === 'function') {
+    ori.requestPermission().catch(() => {})
+  }
+}
+
 interface TiltEngine {
   setImmediate: (x: number, y: number) => void
   setTarget: (x: number, y: number) => void
