@@ -28,6 +28,12 @@ if (typeof document !== 'undefined' && !document.getElementById(KEYFRAMES_ID)) {
     }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes iridescent { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes rise { 0% { transform: translateY(0) scale(1); opacity: 0.8; } 100% { transform: translateY(-120%) scale(0.4); opacity: 0; } }
+    @keyframes float { 0% { transform: translateY(0) translateX(0); opacity: 0.7; } 50% { transform: translateY(-60%) translateX(5px); opacity: 0.5; } 100% { transform: translateY(-120%) translateX(-3px); opacity: 0; } }
+    @keyframes lava { 0% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } 100% { background-position: 0% 0%; } }
+    @keyframes goldShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes petalDrift { 0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.8; } 100% { transform: translateY(110%) translateX(30px) rotate(180deg); opacity: 0; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.15); opacity: 0.9; } }
   `
   document.head.appendChild(style)
 }

@@ -8,14 +8,19 @@ export type DecorKind =
   | 'ascii-bars' | 'terminal-grid' | 'crt-frame'
   // Blueprint
   | 'dim-lines' | 'bp-grid' | 'bp-border'
-  // Wrapped Classic (hue varies by cardType)
-  | 'classic-gradient'
-  // Open Source Universe (planet/comet/galaxy by cardType)
-  | 'universe-effects'
-  // Pixel Arcade (badge/score/screen by cardType)
-  | 'arcade-effects'
-  // Glass Aurora (iridescent/layers by cardType)
-  | 'glass-effects'
+  // New themes (per-card-type effects)
+  | 'magma-effects' | 'abyss-effects' | 'sakura-effects' | 'noir-effects'
+
+// Archetype → theme recommendation mapping
+export const ARCHETYPE_THEME: Record<string, string> = {
+  explorer: 'neon',
+  specialist: 'blueprint',
+  finisher: 'noir',
+  'night-owl': 'midnight',
+  'weekend-warrior': 'abyss',
+  fixer: 'terminal',
+  starter: 'magma',
+}
 
 // Card types used in the ShareStudio carousel + poster
 export type CardType = 'language' | 'numbers' | 'streak' | 'peak' | 'repo' | 'personality' | 'share'
@@ -72,32 +77,30 @@ export const THEMES: Theme[] = [
     },
   },
   {
-    id: 'classic',
-    name: 'Wrapped Classic',
-    emoji: '🎵',
-    tagline: 'Bold gradients, giant typography',
-    card: 'border border-white/10 bg-gradient-to-br from-emerald-500 via-green-600 to-[#0d3b1e]',
-    tile: 'border border-white/15 bg-black/20',
-    accent: 'text-emerald-100',
+    id: 'magma',
+    name: 'Magma Core',
+    emoji: '🌋',
+    tagline: 'Molten lava gradients, forged in fire',
+    card: 'border border-orange-700/30 bg-gradient-to-br from-[#1c0a00] via-[#3a1100] to-[#1a0600]',
+    tile: 'border border-orange-800/20 bg-orange-900/10',
+    accent: 'text-orange-300',
     value: 'text-white',
-    muted: 'text-white/60',
-    chip: 'bg-black/25 text-white',
-    decor: 'none',
+    muted: 'text-orange-200/60',
+    chip: 'border border-orange-600/30 bg-orange-600/10 text-orange-300',
+    decor: 'magma-effects',
     mono: false,
     tilt: {
-      innerGradient: 'linear-gradient(145deg, rgba(16,185,129,0.5) 0%, rgba(2,44,34,0.55) 100%)',
-      glowColor: 'rgba(16,185,129,0.5)',
-      hue: 152,
+      innerGradient: 'linear-gradient(145deg, rgba(249,115,22,0.4) 0%, rgba(154,27,7,0.5) 100%)',
+      glowColor: 'rgba(249,115,22,0.6)',
+      hue: 30,
       shineOpacity: 0.8,
     },
     cards: {
-      language: { decor: 'classic-gradient' },
-      numbers: { decor: 'classic-gradient' },
-      streak: { decor: 'classic-gradient' },
-      peak: { decor: 'classic-gradient' },
-      repo: { decor: 'classic-gradient' },
-      personality: { decor: 'classic-gradient' },
-      share: { decor: 'classic-gradient' },
+      language: { decor: 'magma-effects' },
+      streak: { decor: 'magma-effects' },
+      repo: { decor: 'magma-effects' },
+      personality: { decor: 'magma-effects' },
+      share: { decor: 'magma-effects' },
     },
   },
   {
@@ -151,28 +154,30 @@ export const THEMES: Theme[] = [
     },
   },
   {
-    id: 'universe',
-    name: 'Open Source Universe',
-    emoji: '🌍',
-    tagline: 'Repos as planets, stars as commits',
-    card: 'border border-purple-300/20 bg-gradient-to-br from-[#050816] via-[#111a4d] to-[#2b1055]',
-    tile: 'border border-purple-300/20 bg-white/[0.06]',
-    accent: 'text-cyan-300',
+    id: 'abyss',
+    name: 'Abyss',
+    emoji: '🌊',
+    tagline: 'Dive into the depths of your GitHub history',
+    card: 'border border-cyan-800/30 bg-gradient-to-br from-[#020617] via-[#0c1e3a] to-[#061828]',
+    tile: 'border border-cyan-800/20 bg-cyan-900/10',
+    accent: 'text-cyan-200',
     value: 'text-white',
-    muted: 'text-slate-400',
-    chip: 'border border-purple-300/25 bg-purple-400/10 text-purple-200',
-    decor: 'stars',
+    muted: 'text-cyan-300/60',
+    chip: 'border border-cyan-700/30 bg-cyan-700/10 text-cyan-300',
+    decor: 'abyss-effects',
     mono: false,
     tilt: {
-      innerGradient: 'linear-gradient(145deg, rgba(88,28,135,0.5) 0%, rgba(14,165,233,0.3) 100%)',
-      glowColor: 'rgba(168,85,247,0.5)',
-      hue: 265,
-      shineOpacity: 0.75,
+      innerGradient: 'linear-gradient(145deg, rgba(56,189,248,0.3) 0%, rgba(14,65,100,0.5) 100%)',
+      glowColor: 'rgba(56,189,248,0.6)',
+      hue: 200,
+      shineOpacity: 0.7,
     },
     cards: {
-      repo: { decor: 'universe-effects' },
-      streak: { decor: 'universe-effects' },
-      personality: { decor: 'universe-effects' },
+      language: { decor: 'abyss-effects' },
+      streak: { decor: 'abyss-effects' },
+      repo: { decor: 'abyss-effects' },
+      personality: { decor: 'abyss-effects' },
+      share: { decor: 'abyss-effects' },
     },
   },
   {
@@ -201,53 +206,57 @@ export const THEMES: Theme[] = [
     },
   },
   {
-    id: 'arcade',
-    name: 'Pixel Arcade',
-    emoji: '🎮',
-    tagline: 'Retro 8-bit, chunky, nostalgic',
-    card: 'border-4 border-[#fde047] bg-[#24175a]',
-    tile: 'border-2 border-[#fde047]/40 bg-[#fde047]/10',
-    accent: 'text-[#4ade80]',
-    value: 'text-white',
-    muted: 'text-[#fde047]/70',
-    chip: 'bg-[#ec4899] text-white',
-    decor: 'pixels',
-    mono: true,
+    id: 'sakura',
+    name: 'Sakura',
+    emoji: '🌸',
+    tagline: 'Luxury Japanese design — matte paper, cherry blossoms',
+    card: 'border border-pink-200/30 bg-gradient-to-br from-[#fdf2f8] via-[#fce7f3] to-[#f5f0e8]',
+    tile: 'border border-pink-200/25 bg-white/50',
+    accent: 'text-pink-600',
+    value: 'text-[#1c1917]',
+    muted: 'text-pink-400/80',
+    chip: 'border border-pink-300/40 bg-pink-100 text-pink-700',
+    decor: 'sakura-effects',
+    mono: false,
     tilt: {
-      innerGradient: 'linear-gradient(145deg, rgba(236,72,153,0.4) 0%, rgba(59,130,246,0.35) 100%)',
-      glowColor: 'rgba(250,204,21,0.5)',
-      hue: 48,
-      shineOpacity: 0.8,
+      innerGradient: 'linear-gradient(145deg, rgba(251,113,133,0.25) 0%, rgba(244,114,182,0.18) 100%)',
+      glowColor: 'rgba(251,113,133,0.4)',
+      hue: 340,
+      shineOpacity: 0.5,
     },
     cards: {
-      personality: { decor: 'arcade-effects' },
-      streak: { decor: 'arcade-effects' },
-      share: { decor: 'arcade-effects' },
+      language: { decor: 'sakura-effects' },
+      streak: { decor: 'sakura-effects' },
+      repo: { decor: 'sakura-effects' },
+      personality: { decor: 'sakura-effects' },
+      share: { decor: 'sakura-effects' },
     },
   },
   {
-    id: 'aurora',
-    name: 'Glass Aurora',
-    emoji: '💎',
-    tagline: 'Frosted glass, liquid gradients',
-    card: 'border border-white/25 bg-white/10 backdrop-blur-xl',
-    tile: 'border border-white/20 bg-white/10',
-    accent: 'text-cyan-200',
+    id: 'noir',
+    name: 'Noir Gold',
+    emoji: '⚜️',
+    tagline: 'Matte black + satin gold — luxury, minimal, timeless',
+    card: 'border border-[#d4af37]/20 bg-[#0a0a0a]',
+    tile: 'border border-[#d4af37]/15 bg-[#d4af37]/5',
+    accent: 'text-[#d4af37]',
     value: 'text-white',
-    muted: 'text-white/60',
-    chip: 'border border-white/20 bg-white/15 text-white',
-    decor: 'mesh',
+    muted: 'text-[#d4af37]/60',
+    chip: 'border border-[#d4af37]/30 bg-[#d4af37]/10 text-[#d4af37]',
+    decor: 'noir-effects',
     mono: false,
     tilt: {
-      innerGradient: 'linear-gradient(145deg, rgba(34,211,238,0.25) 0%, rgba(232,121,249,0.2) 100%)',
-      glowColor: 'rgba(103,232,249,0.45)',
-      hue: 190,
-      shineOpacity: 0.7,
+      innerGradient: 'linear-gradient(145deg, rgba(212,175,55,0.2) 0%, rgba(184,154,45,0.15) 100%)',
+      glowColor: 'rgba(212,175,55,0.5)',
+      hue: 45,
+      shineOpacity: 0.6,
     },
     cards: {
-      language: { decor: 'glass-effects' },
-      share: { decor: 'glass-effects' },
-      personality: { decor: 'glass-effects' },
+      language: { decor: 'noir-effects' },
+      streak: { decor: 'noir-effects' },
+      repo: { decor: 'noir-effects' },
+      personality: { decor: 'noir-effects' },
+      share: { decor: 'noir-effects' },
     },
   },
 ]
@@ -508,126 +517,301 @@ export function Decor({ kind, cardType }: { kind: DecorKind; cardType?: CardType
     )
   }
 
-  // ─── Wrapped Classic ──────────────────────────────────────────────
-  // Each card type gets a different bold gradient hue (Spotify Wrapped style).
-  if (kind === 'classic-gradient') {
-    const gradients: Partial<Record<CardType, string>> = {
-      language: 'from-emerald-500/20 via-green-600/15 to-emerald-700/20',
-      numbers: 'from-violet-500/20 via-purple-600/15 to-indigo-700/20',
-      streak: 'from-amber-500/20 via-orange-600/15 to-rose-700/20',
-      peak: 'from-rose-500/20 via-red-600/15 to-pink-700/20',
-      repo: 'from-sky-500/20 via-blue-600/15 to-cyan-700/20',
-      personality: 'from-pink-500/20 via-fuchsia-600/15 to-violet-700/20',
-      share: 'from-indigo-600/25 via-violet-600/20 to-purple-700/25',
-    }
-    const gradient = gradients[cardType ?? 'numbers'] ?? gradients.numbers
-    return (
-      <div className={`pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br ${gradient}`} />
-    )
-  }
-
-  // ─── Open Source Universe ─────────────────────────────────────────
-  if (kind === 'universe-effects') {
-    if (cardType === 'repo') {
-      // Planet orb with orbital glow
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/4 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-purple-400/25 to-cyan-400/15 shadow-[0_0_40px_rgba(139,92,246,0.3)]" />
-          <div className="absolute left-1/4 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-300/10" style={{ transform: 'translate(-50%,-50%) rotateX(75deg)' }} />
-          <div className="absolute left-1/4 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-300/5" style={{ transform: 'translate(-50%,-50%) rotateX(75deg) rotateZ(15deg)' }} />
-        </div>
-      )
-    }
-    if (cardType === 'streak') {
-      // Comet trail
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[-10%] top-[30%] h-[2px] w-[120%] -rotate-[20deg] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
-          <div className="absolute left-[-5%] top-[28%] h-[1px] w-[110%] -rotate-[20deg] bg-gradient-to-r from-transparent via-purple-400/15 to-transparent" />
-          <div className="absolute right-[5%] top-[27%] h-2 w-2 rounded-full bg-cyan-300/40 shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
-        </div>
-      )
-    }
-    if (cardType === 'personality') {
-      // Galaxy swirl
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.15]">
-          <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[conic-gradient(from_0deg,transparent,rgba(139,92,246,0.4),transparent,rgba(34,211,238,0.3),transparent)]" style={{ animation: 'spin 20s linear infinite' }} />
-          <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/20 blur-xl" />
-        </div>
-      )
-    }
-    return null
-  }
-
-  // ─── Pixel Arcade ────────────────────────────────────────────────
-  if (kind === 'arcade-effects') {
-    if (cardType === 'personality') {
-      // Pixel badge border
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute inset-3 border-4 border-dashed border-[#fde047]/40" />
-          <div className="absolute inset-3 border border-[#fde047]/10" />
-          <div className="absolute left-1/2 top-2 -translate-x-1/2 rounded-full bg-[#fde047]/15 px-3 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#fde047]/60">
-            ★ SELECTED ★
-          </div>
-        </div>
-      )
-    }
-    if (cardType === 'streak') {
-      // Retro high-score box
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
-          <div className="absolute right-4 top-4 rounded border-2 border-dashed border-[#4ade80]/50 px-2 py-1 font-mono text-[10px] font-bold text-[#4ade80]">
-            HIGH SCORE
-          </div>
-        </div>
-      )
-    }
-    if (cardType === 'share') {
-      // Retro screen frame
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute inset-2 rounded-2xl border-2 border-[#fde047]/25" />
-          <div className="absolute inset-3 rounded-xl border border-[#fde047]/10" />
-        </div>
-      )
-    }
-    return null
-  }
-
-  // ─── Glass Aurora ────────────────────────────────────────────────
-  if (kind === 'glass-effects') {
-    if (cardType === 'share') {
-      // Stacked glass panels
-      return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-4 top-6 right-4 bottom-8 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm" />
-          <div className="absolute left-8 top-10 right-8 bottom-12 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-[2px]" />
-          <div className="absolute left-12 top-14 right-12 bottom-16 rounded-2xl border border-white/[0.04] bg-white/[0.01]" />
-        </div>
-      )
-    }
+  // ─── Magma Core ──────────────────────────────────────────────────
+  if (kind === 'magma-effects') {
     if (cardType === 'language') {
-      // Iridescent sweep
+      // Lava flow — animated gradient
       return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.08]">
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
           <div
-            className="absolute inset-[-50%] rotate-[30deg]"
+            className="absolute inset-0 opacity-40"
             style={{
-              background: 'linear-gradient(120deg, rgba(255,0,128,0.3), rgba(0,200,255,0.3), rgba(128,255,0,0.3), rgba(255,0,128,0.3))',
-              backgroundSize: '200% 200%',
-              animation: 'iridescent 8s ease-in-out infinite',
+              background: 'linear-gradient(160deg, rgba(249,115,22,0.3), rgba(180,30,10,0.25), rgba(249,115,22,0.3), rgba(180,30,10,0.25))',
+              backgroundSize: '300% 300%',
+              animation: 'lava 12s ease-in-out infinite',
             }}
           />
         </div>
       )
     }
-    if (cardType === 'personality') {
-      // Frosted glass accent
+    if (cardType === 'streak') {
+      // Ember rise — floating orange dots
+      const embers = [
+        { left: '20%', delay: '0s', size: 'h-1 w-1' },
+        { left: '40%', delay: '1.5s', size: 'h-1.5 w-1.5' },
+        { left: '60%', delay: '0.8s', size: 'h-1 w-1' },
+        { left: '75%', delay: '2.2s', size: 'h-1 w-1' },
+        { left: '35%', delay: '3s', size: 'h-1.5 w-1.5' },
+        { left: '55%', delay: '1s', size: 'h-0.5 w-0.5' },
+      ]
       return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-4 top-4 right-4 bottom-4 rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-[4px]" />
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          {embers.map((e, i) => (
+            <div
+              key={i}
+              className={`absolute bottom-0 rounded-full bg-orange-400 shadow-[0_0_6px_rgba(251,146,60,0.6)] ${e.size}`}
+              style={{ left: e.left, animation: `rise 4s ${e.delay} linear infinite` }}
+            />
+          ))}
+        </div>
+      )
+    }
+    if (cardType === 'repo') {
+      // Forge glow — centered warm radial
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute left-1/2 top-1/3 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/20 blur-2xl" style={{ animation: 'pulse 4s ease-in-out infinite' }} />
+          <div className="absolute left-1/2 top-1/3 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/15 blur-xl" />
+        </div>
+      )
+    }
+    if (cardType === 'personality') {
+      // Cracked obsidian
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-[0.12]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'repeating-linear-gradient(135deg, rgba(249,115,22,0.6) 0px, transparent 2px, transparent 14px, rgba(249,115,22,0.4) 14px, transparent 16px, transparent 28px)',
+            }}
+          />
+        </div>
+      )
+    }
+    if (cardType === 'share') {
+      // Full lava — deepest molten gradient
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div
+            className="absolute inset-0 opacity-60"
+            style={{
+              background: 'linear-gradient(145deg, rgba(220,38,38,0.4), rgba(234,88,12,0.5), rgba(220,38,38,0.3), rgba(234,88,12,0.4))',
+              backgroundSize: '300% 300%',
+              animation: 'lava 8s ease-in-out infinite',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        </div>
+      )
+    }
+    return null
+  }
+
+  // ─── Abyss ────────────────────────────────────────────────────────
+  if (kind === 'abyss-effects') {
+    if (cardType === 'language') {
+      // Caustic light beams from top
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-[0.15]">
+          <div className="absolute left-[15%] top-0 h-full w-[1px] bg-gradient-to-b from-cyan-300/60 via-transparent to-transparent" style={{ transform: 'rotate(-8deg)', transformOrigin: 'top center' }} />
+          <div className="absolute left-[35%] top-0 h-[70%] w-[1px] bg-gradient-to-b from-cyan-200/50 via-transparent to-transparent" style={{ transform: 'rotate(4deg)', transformOrigin: 'top center' }} />
+          <div className="absolute right-[25%] top-0 h-[80%] w-[1px] bg-gradient-to-b from-cyan-300/40 via-transparent to-transparent" style={{ transform: 'rotate(-5deg)', transformOrigin: 'top center' }} />
+        </div>
+      )
+    }
+    if (cardType === 'streak') {
+      // Bubble trail
+      const bubbles = [
+        { left: '25%', size: 'h-2 w-2', delay: '0s' },
+        { left: '50%', size: 'h-3 w-3', delay: '1.2s' },
+        { left: '70%', size: 'h-2 w-2', delay: '2.4s' },
+        { left: '35%', size: 'h-1.5 w-1.5', delay: '0.6s' },
+        { left: '60%', size: 'h-2.5 w-2.5', delay: '1.8s' },
+      ]
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          {bubbles.map((b, i) => (
+            <div
+              key={i}
+              className={`absolute bottom-0 rounded-full border border-cyan-400/30 bg-cyan-500/10 ${b.size}`}
+              style={{ left: b.left, animation: `float 6s ${b.delay} ease-in-out infinite` }}
+            />
+          ))}
+        </div>
+      )
+    }
+    if (cardType === 'repo') {
+      // Jellyfish glow — pulsing centered blue
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div
+            className="absolute left-1/2 top-1/3 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/15 blur-2xl"
+            style={{ animation: 'pulse 5s ease-in-out infinite' }}
+          />
+          <div className="absolute left-1/2 top-1/3 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/10 blur-xl" />
+        </div>
+      )
+    }
+    if (cardType === 'personality') {
+      // Deep pressure — blue-tinted vignette
+      return (
+        <div
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 30%, rgba(6,182,212,0.15) 70%, rgba(2,44,74,0.35) 100%)',
+          }}
+        />
+      )
+    }
+    if (cardType === 'share') {
+      // Abyss depths — layered deep blue
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/20 via-blue-900/30 to-[#020617]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          <div className="absolute left-1/2 top-1/4 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        </div>
+      )
+    }
+    return null
+  }
+
+  // ─── Sakura ───────────────────────────────────────────────────────
+  if (kind === 'sakura-effects') {
+    if (cardType === 'language') {
+      // Falling petals
+      const petals = [
+        { left: '15%', delay: '0s', rotate: '25deg' },
+        { left: '45%', delay: '1.5s', rotate: '-35deg' },
+        { left: '75%', delay: '3s', rotate: '15deg' },
+        { left: '30%', delay: '2s', rotate: '40deg' },
+        { left: '60%', delay: '0.5s', rotate: '-20deg' },
+      ]
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-40">
+          {petals.map((p, i) => (
+            <div
+              key={i}
+              className="absolute top-0 h-2 w-2.5 rounded-full bg-pink-400/60"
+              style={{ left: p.left, animation: `petalDrift 8s ${p.delay} ease-in-out infinite`, transform: `rotate(${p.rotate})` }}
+            />
+          ))}
+        </div>
+      )
+    }
+    if (cardType === 'streak') {
+      // Ink brush stroke
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute left-[5%] top-[48%] h-[3px] w-[90%] rounded-full bg-gradient-to-r from-transparent via-pink-600/25 to-transparent" />
+          <div className="absolute left-[10%] top-[52%] h-[1px] w-[80%] rounded-full bg-gradient-to-r from-transparent via-pink-500/15 to-transparent" />
+        </div>
+      )
+    }
+    if (cardType === 'repo') {
+      // Washi texture — subtle paper grain
+      return (
+        <div
+          className="pointer-events-none absolute inset-0 z-[1] opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(0deg, rgba(120,113,108,0.3) 0px, transparent 1px, transparent 4px), repeating-linear-gradient(90deg, rgba(120,113,108,0.2) 0px, transparent 1px, transparent 6px)',
+          }}
+        />
+      )
+    }
+    if (cardType === 'personality') {
+      // Blossom crown — arc of petals
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          {Array.from({ length: 7 }).map((_, i) => {
+            const angle = -60 + i * 20
+            const rad = (angle * Math.PI) / 180
+            const x = 50 + Math.cos(rad) * 35
+            const y = 18 + Math.sin(rad) * 25
+            return (
+              <div
+                key={i}
+                className="absolute h-2 w-2.5 rounded-full bg-pink-400/50"
+                style={{ left: `${x}%`, top: `${y}%`, transform: `rotate(${angle}deg)` }}
+              />
+            )
+          })}
+        </div>
+      )
+    }
+    if (cardType === 'share') {
+      // Full bloom — dense petals + stronger washi
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          {Array.from({ length: 10 }).map((_, i) => {
+            const x = 10 + (i * 8) % 90
+            const delay = (i * 0.7) % 5
+            return (
+              <div
+                key={i}
+                className="absolute top-0 h-2 w-2.5 rounded-full bg-pink-400/50"
+                style={{ left: `${x}%`, animation: `petalDrift 7s ${delay}s ease-in-out infinite` }}
+              />
+            )
+          })}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: 'repeating-linear-gradient(0deg, rgba(120,113,108,0.4) 0px, transparent 1px, transparent 3px), repeating-linear-gradient(90deg, rgba(120,113,108,0.3) 0px, transparent 1px, transparent 5px)',
+            }}
+          />
+        </div>
+      )
+    }
+    return null
+  }
+
+  // ─── Noir Gold ──────────────────────────────────────────────────
+  if (kind === 'noir-effects') {
+    if (cardType === 'language') {
+      // Gold hairline
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute left-0 right-0 top-[48%] h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
+        </div>
+      )
+    }
+    if (cardType === 'streak') {
+      // Gold shimmer sweep
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-[0.2]">
+          <div
+            className="absolute inset-[-100%] rotate-[25deg]"
+            style={{
+              background: 'linear-gradient(100deg, transparent 30%, rgba(212,175,55,0.4) 50%, transparent 70%)',
+              backgroundSize: '400% 100%',
+              animation: 'goldShimmer 6s linear infinite',
+            }}
+          />
+        </div>
+      )
+    }
+    if (cardType === 'repo') {
+      // Spotlight — focused warm glow
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute left-1/2 top-1/3 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d4af37]/10 blur-3xl" />
+        </div>
+      )
+    }
+    if (cardType === 'personality') {
+      // Gold frame with corner accents
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden rounded-[28px]">
+          <div className="absolute inset-3 border border-[#d4af37]/20 rounded-[24px]" />
+          <div className="absolute left-4 top-4 h-4 w-4 border-t border-l border-[#d4af37]/30" />
+          <div className="absolute right-4 top-4 h-4 w-4 border-t border-r border-[#d4af37]/30" />
+          <div className="absolute left-4 bottom-4 h-4 w-4 border-b border-l border-[#d4af37]/30" />
+          <div className="absolute right-4 bottom-4 h-4 w-4 border-b border-r border-[#d4af37]/30" />
+        </div>
+      )
+    }
+    if (cardType === 'share') {
+      // Full noir — gold border frame + satin shimmer
+      return (
+        <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden rounded-[28px]">
+          <div className="absolute inset-2 rounded-[24px] border-2 border-[#d4af37]/30" />
+          <div className="absolute left-5 top-5 h-5 w-5 border-t-2 border-l-2 border-[#d4af37]/40 rounded-tl-lg" />
+          <div className="absolute right-5 top-5 h-5 w-5 border-t-2 border-r-2 border-[#d4af37]/40 rounded-tr-lg" />
+          <div className="absolute left-5 bottom-5 h-5 w-5 border-b-2 border-l-2 border-[#d4af37]/40 rounded-bl-lg" />
+          <div className="absolute right-5 bottom-5 h-5 w-5 border-b-2 border-r-2 border-[#d4af37]/40 rounded-br-lg" />
+          <div className="absolute inset-0 opacity-[0.06]" style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.3) 0%, transparent 50%, rgba(212,175,55,0.2) 100%)' }} />
         </div>
       )
     }

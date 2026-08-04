@@ -18,7 +18,7 @@ import {
 } from 'lucide-react'
 import type { Analysis } from '../../lib/analysis'
 import type { Personality } from '../../lib/personality'
-import { getTheme } from '../../lib/themes'
+import { getTheme, ARCHETYPE_THEME } from '../../lib/themes'
 import ShareCard, { type StatCardDef } from './ShareCard'
 import WrappedPoster from './WrappedPoster'
 import ThemePicker from './ThemePicker'
@@ -103,7 +103,8 @@ function buildStatCards(analysis: Analysis, personality: Personality, username: 
 }
 
 export default function ShareStudio({ analysis, personality, username, year, avatarUrl }: Props) {
-  const [themeId, setThemeId] = useState('neon')
+  const recommendedThemeId = personality ? (ARCHETYPE_THEME[personality.archetype.id] ?? 'neon') : 'neon'
+  const [themeId, setThemeId] = useState(recommendedThemeId)
   const [idx, setIdx] = useState(0)
   const [busy, setBusy] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -343,6 +344,12 @@ export default function ShareStudio({ analysis, personality, username, year, ava
 
       <aside className="w-full max-w-[420px] lg:w-auto lg:max-w-none lg:pt-6">
         <ThemePicker themeId={themeId} onSelect={setThemeId} />
+        {personality && (
+          <div className="mt-3 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-center text-[10px] text-slate-500 lg:text-left">
+            <span className="font-medium text-slate-400">{getTheme(recommendedThemeId).emoji} Recommended</span> for your archetype —{' '}
+            <span className="text-slate-300">{personality.archetype.name}</span>
+          </div>
+        )}
       </aside>
     </div>
   )
