@@ -12,7 +12,7 @@
 > Turn a GitHub profile into a cinematic, interactive story.  
 > Not another dashboard. A **Wrapped**.
 
-[**Try it live →**](https://a8594948.devwrapped-l8p.pages.dev)
+[**Try it live →**](https://devwrapped-app.vercel.app)
 
 ---
 
